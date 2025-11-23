@@ -48,7 +48,7 @@ https://www.youtube.com/watch?v=mpQZVYPuDGU
 ##### ① DNS 쿼리 routes "end users" to "end application"*
 
 * Route 53은 DNS다. 이름을 IP로 바꿔줄 뿐이다.
-  단, **"어느 리전의 엔드포인트 IP를 돌려줄지"** 까지는 Route 53이 결정한다.
+  단, **"어느 리전의 엔드포인트(클라이언트 입장에서 보이는 URL 진입점) IP를 돌려줄지"** 까지는 Route 53이 결정한다.
   어떤 에지 네트워크(CloudFront/GA/ALB/Region 등)에 붙일지”를 DNS로 선택
     ```
     서울 리전 ALB
@@ -63,7 +63,7 @@ https://www.youtube.com/watch?v=mpQZVYPuDGU
     라우터(L3)에서는 네트워크 라우팅 알고리즘(BGP)에 따라
     올바른 에지 로케이션(서울 POP)의 IP로 자동 라우팅 해준다.
     ```
-    1. S3 정적 웹 호스팅 엔드포인트로 라우팅
+    1. S3 정적 웹 호스팅 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)로 라우팅
     2. CloudFront 배포 등으로 라우팅
 
 ##### ② Health Check
@@ -87,7 +87,7 @@ https://www.youtube.com/watch?v=mpQZVYPuDGU
     {
       "레코드 이름": "www.example.com",
       "레코드 형식": "A (Alias)",
-      "별칭 대상": "S3 정적 웹 호스팅 엔드포인트"
+      "별칭 대상": "S3 정적 웹 호스팅 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)"
     }
     ```
 

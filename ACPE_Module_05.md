@@ -36,7 +36,7 @@ RDS VS DynamoDB
 5. EBS 스냅샷에 대한 설명으로 옳은 것은?
    B. 증분 저장(변경 블록만) ✅
 6. 다음 중 퍼블릭 인터넷 없이 S3에 사설로 접근하는 방법은? 
-   B. VPC 엔드포인트(Gateway 라우트/Interface) ✅
+   B. VPC 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)(Gateway 라우트/Interface) ✅
    C. VGW ❌
 7. RDS의 고객 책임 항목은?
    C. 스키마/쿼리/인덱스/접근제어 ✅
@@ -161,7 +161,7 @@ DMS의 **지속 복제(CDC)**를 사용하면 얻는 효과는?
     A. NAT Gateway 
     B. VGW 
     C. DX 전용회선만 
-    D. VPC 엔드포인트
+    D. VPC 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)
 
 EFS vs S3 비교로 옳은 것은?
 

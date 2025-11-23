@@ -52,7 +52,7 @@
 ##### ① Amazon API Gateway
 
 * Edge 최적화로 Regional API 구성 
-* Rest/HTTP API 요청을 게시하고, 유지하고 엔드포인트나 로드밸런서로 연결
+* Rest/HTTP API 요청을 게시하고, 유지하고 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)나 로드밸런서로 연결
 
 ##### ② Internet Gateway
 
@@ -74,7 +74,7 @@
 
 #### 수많은 동적 요청을 클러스터로 존재하는 백엔드 서버가 요청을 처리하게 할때, 요청을 분산 라우팅 하는 녀석
 
-##### 백엔드 : HTTP/Restful API 동적 요청을 받아 처리하는 엔드포인트 호스트
+##### 백엔드 : HTTP/Restful API 동적 요청을 받아 처리하는 엔드포인트(클라이언트 입장에서 보이는 URL 진입점) 호스트
 * 백엔드라 할 수 있는것들은 `CloudFront`, `EC2`, `API Server(like AWS lambda)` 
   * EC2 구성요소 : Application Server, EBS ,RDBMS DB Server
 

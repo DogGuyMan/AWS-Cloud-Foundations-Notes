@@ -229,7 +229,7 @@ Which component of the AWS Global Infrastructure does Amazon CloudFront use to e
 
 #### 2).  Amazon Route 53 : Route 53 is a Domain Name System or DNS
 
-* 어떤 도메인이 어느 엔드포인트로 갈지 이름 해석/트래픽 정책.
+* 어떤 도메인이 어느 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)로 갈지 이름 해석/트래픽 정책.
 * 즉, "유저 기기"에서 부터 "인터넷 애플리케이션과 같은 서버 기기"로 부터 라우팅 하는 DNS
 * Route 53 is a Domain Name System or DNS that routes "end users" to "end application"
 
