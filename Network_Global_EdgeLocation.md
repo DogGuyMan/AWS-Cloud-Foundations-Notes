@@ -158,7 +158,7 @@ L1/L2 → L3 → RAM
 
 * S3/정적만 CloudFront, 컴퓨팅은 항상 GA” 인 것처럼 느껴지는 표현은 옳지 않다.
 
-1. CloudFront : S3/ALB/API Gateway 등 HTTP/HTTPS 기반 컨텐츠를 전 세계 엣지에서 캐시·전달하는 L7 CDN
+1. CloudFront : S3/ALB/API Gateway 등 HTTP/HTTPS 기반 컨텐츠를 전 세계 엣지에서 캐시,전달하는 L7 CDN
    ```
    1. CloudFront가 안붙었을떄.
         모든 요청이 항상 Origin 레벨까지 내려간다.
