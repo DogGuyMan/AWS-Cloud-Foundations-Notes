@@ -69,10 +69,12 @@ Amazon 서비스를 프로비저닝 할 수 있는 다양한 방법을 비교할
 #### 2). 가용 영역 (AZ) : 리전 내의 단일 데이터 센터 또는 데이터 센터 그룹
 
 * 소프트웨어적인 장애에 비즈니스를 중단 없이 계속 운영할 수 있게 됩니다.
+  1. duplicate/redundant : 서로 다른 AZ에 데이터 복제/백업 가능
+  2. Fault Tolerance : 한 AZ가 장애 나도 다른 AZ에서 애플리케이션이 계속 동작
+  3. High availability : 고가용성
 * 각 리전에는 최소 세 개의 AZ이 포함
 * 단일 데이터 센터로 가용 영역을 복수로 지정할 수는 없다.
-  1. FT를 위해 사용되고
-  2. Privete Link를 통해 매우빠른 연결을 하고 있다.
+* Privete Link를 통해 매우빠른 연결을 하고 있다.
 
 <div align=center>
     <img src="image/2025-09-21-20-05-36.png" width="80%">
@@ -129,18 +131,18 @@ Which component of the AWS Global Infrastructure does Amazon CloudFront use to e
 ##### 엣지 네트워킹의 좀더 자세한 원리
 * 410개 이상의 글로벌 멀티 서비스 접속 지점(POP)을 두어 네트워크 홉을 제거한다 -> 이것이 더 짧은 지연시간을 제공한다.
 
-* POP의 스펙
+1. **POP의 스펙**
   * 캐싱
   * 네트워크 연결
   * 엣지 컴퓨팅
 
-* CloudFront 라는 이름의 CDN
+1. **CloudFront 라는 이름의 CDN**
   * 파일 캐싱 말고, API 전송의 역할
   * 애플리케이션 오리진(원본 위치)로 전송된 요청을 통합
 
-* DDoS및, 봇 공격과 같은 보안 이슈는 Cloud WAF에 의존을 한다.
+1. **보안** : 내장된 DDoS 보호
 
-* 트래픽 처리같은 경우 
+2. **트래픽 처리같은 경우 **
   * CloudFront 하나가 전세계에 분산된 에지 로케이션에서 나온 트래픽을 처리한다.
   * Route 53을 통해 웹사이트 이름을 IP주소로 변환해 라우팅하거나
   * AWS Global Accelerator을 통해 글로벌 트래픽 라우팅 간소화
@@ -153,6 +155,13 @@ Which component of the AWS Global Infrastructure does Amazon CloudFront use to e
 * 즉, "유저 기기"에서 부터 "인터넷 애플리케이션과 같은 서버 기기"로 부터 라우팅 하는 DNS
 * Route 53 is a Domain Name System or DNS that routes "end users" to "end application"
 * 도메인 등록, 트래픽 라우팅, 헬스 체크 등을 수행.
+
+##### Routing 방법
+
+1. Failover routing : 장애 감지 후 건강한 위치로 리다이렉트  
+2. Weighted routing : A/B 테스트, 트래픽 비율에 따라 분산  
+3. Latency-based routing : 성능 측정 기반으로 가장 빠른 리전에 라우팅  
+4. Geolocation routing : 국가/지역에 따라 다른 엔드포인트로 보냄
 
 ##### 사용 패턴
 
