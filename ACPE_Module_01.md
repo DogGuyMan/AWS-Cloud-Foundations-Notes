@@ -61,31 +61,6 @@
 
 ---
 
-#### 4). Cloud Platform Architecture
-```
-Cloud Platform Architecture
-  │
-  ├── Cloud Models
-  │   ├─ Public : AWS | Google Cloud | MS Azure | Salesforce | IBM Blue
-  │   ├─ Private : 내부 구축형, 독립 인프라, 보안↑ ✅
-  │   └─ Hybrid : 혼합 구조, 양자 결합, 유연성↑ ✅
-  │
-  ├── Cloud Services
-  │   ├─ IaaS → EC2, S3 & EBS, VPC
-  │   ├─ PaaS → AWS Elastic Beanstalk, Amazon RDS & DynamoDB
-  │   └─ SaaS → Gmail, Google Docs
-  │
-  ├── Cloud Management ACPR
-  │   └─ Autonomic (Capacity, Power, Reliability)
-  │
-  └── Cloud Security
-      ├─ Data Privacy
-      ├─ Trust Overlay : 데이터 무결성 보호, 
-      └─ Watermarking Protection : 신뢰 기반 인증
-```
-
----
-
 > ### 📄 1. 개념 & 비용/운영 포인트
 
 #### 1). 서비스 3 요소 XaaS (Infra–Platform–Software) 
@@ -192,14 +167,38 @@ Cloud Platform Architecture
     <h5></h5>
 </div>
 
-1. 고객 책임 Security IN the Cloud
-   * AWS에 저장하는 데이터와 해당 데이터에 대한 접근 권한과 클라이언트 암호화 책임이 있다.
-2. 공유 책임 : Varies by service
-   * 사용 서비스에 따라 달라지는데
-     네트워크의 "방화벽 구성" 서버측 "암호화", "트래픽 보호",
-     OS(귀하의 회사는 OS에 보안 패치를 적용할 책임이 있습니다.)
-3. AWS 책임 : 
-   * 인프라 보호, 의외로 OS는 인프라는 아니긴 함
-     하드웨어, 소프트웨어, 네트워킹 및 시설
+#### 1). 책임의 분류
+
+##### ① 고객 책임 Security IN the Cloud
+* AWS에 저장하는 데이터와 해당 데이터에 대한 접근 권한과 클라이언트 암호화 책임이 있다.
+##### ② 공유 책임 : Varies by service
+* 사용 서비스에 따라 달라지는데
+ 네트워크의 "방화벽 구성" 서버측 "암호화", "트래픽 보호",
+ OS(귀하의 회사는 OS에 보안 패치를 적용할 책임이 있습니다.)
+##### ③ AWS 책임 : 
+* 인프라 보호, 의외로 OS는 인프라는 아니긴 함
+ 하드웨어, 소프트웨어, 네트워킹 및 시설
+
+#### 2). 고객 입장 관리형의 단계에 따른 행동
+
+##### ① Fully managed
+
+* **AWS** : 인프라, 확장성(수요에 따라 자동 확장/축소), 가용성 등 나머지 모든 것을 처리합니다.
+* **사용자** : 
+  * 코드 작성 및 배포에 집중
+  * 데이터 접근 권한 관리 책임
+  * AWS ID 및 액세스 관리(IAM) 역할과 권한을 올바르게 구성
+
+##### ② Managed
+
+* **AWS** : 대부분의 인프라를 AWS가 대신 처리해 주지만
+  * 물리적 하드웨어 관리 대행
+  * 운영 체제, 보안 패치 및 네트워크 설정 대행
+* **사용자** : 배포 옵션 선택 및 환경 설정 확장성, 구성은 직접 설정해야 한다.
+
+##### ③ Unmanaged
+
+* **AWS** : 물리적 하드웨어만 관리 대행
+* **사용자** : 운영 체제, 보안 패치 및 네트워크 설정 구성
 
 ---

@@ -10,9 +10,10 @@
 ##### [ACPE_Module_04](ACPE_Module_04.md) 
 ##### [ACPE_Module_05](ACPE_Module_05.md) 
 ##### [ACPE_Module_06](ACPE_Module_06.md) 
-##### [ACPE_Module_07_NOT](ACPE_Module_07_NOT.md) 
+##### [ACPE_Module_07](ACPE_Module_07.md) 
 ##### [ACPE_Module_08](ACPE_Module_08.md) 
 ##### [ACPE_Module_10](ACPE_Module_10.md) 
+##### [ACPE_Module_11](ACPE_Module_11.md) 
 
 ---
 
