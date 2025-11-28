@@ -10,24 +10,6 @@
 ##### ① High availability and fault tolerance
 ##### ② 에지 로케이션 : Low latency for end users
 
-#### 이 모듈의 학습 목표는 다음과 같습니다.
-```
-AWS 글로벌 인프라의 이점을 요약할 수 있습니다.
-    AWS 리전 및 가용 영역
-        1. Region : 전 세계에 위치한 물리적 장소, 여러 데이터 센터 포함
-        2. AZ : 하나 이상의 데이터 센터가 포함됩니다.
-        3. EdgeLocaion : 위치는 리전 외부에 위치, 사용자가 자주 접근하는 데이터에 낮은 지연 시간으로 접근
-    가용 영역의 기본 개념을 설명할 수 있습니다.
-
-에지 로케이션 및 Amazon CloudFront
-    AWS CloudFront 이점을 설명할 수 있습니다.
-
-Amazon 서비스를 프로비저닝 할 수 있는 다양한 방법을 비교할 수 있습니다.
-    AWS Management Console, AWS CLI 및 SDK
-    AWS Elastic Beanstalk
-    AWS CloudFormation
-```
-
 ---
 
 > ### 📄 1. 고가용성 & 내결함성
@@ -45,7 +27,7 @@ Amazon 서비스를 프로비저닝 할 수 있는 다양한 방법을 비교할
 
 <div align=center>
     <img src="image/2025-09-21-20-04-47.png" width="80%">
-    <h5></h5>
+    <h5>각 리전에는 최소 세 개의 AZ이 포함</h5>
 </div>
 
 * AWS가 권장하는 모범 사례는 **한 리전에서 두 개 이상의 가용 영역을 사용하는 것**입니다. 
@@ -56,25 +38,22 @@ Amazon 서비스를 프로비저닝 할 수 있는 다양한 방법을 비교할
 * 리전은 전 세계에 위치한 물리적 장소로, 여러 데이터 센터를 포함
 * 지진, 홍수, 화재와 같은 대규모 재난에서의 DR, HA 제공
 
-```
-리전 선택의 고려사항
-1. 컴플라이언스(규정준수) 요구사항 : 지역별 엄격한 현지 법률 규정(GDPR) 확인
-2. 프록시미티(근접성) : 지역과 가까운 정도, 데이터가 이동해야 하는 거리를 줄여 지연시간을 낮춥니다.
-3. 피쳐 가용성 : AWS는 어떤 지역에 따라서 서비스를 제공 안할수도 있다.
-4. 프라이싱 : 리전별로 가격이 다를수도, 비용 최적화 적인 곳이 있다.
-```
+##### 리전 선택의 고려사항
+1. **컴플라이언스(규정준수) 요구사항** : 지역별 엄격한 현지 법률 규정(GDPR) 확인
+2. **프록시미티(근접성)** : 지역과 가까운 정도, 데이터가 이동해야 하는 거리를 줄여 지연시간을 낮춥니다.
+3. **피쳐 가용성** : AWS는 어떤 지역에 따라서 서비스를 제공 안할수도 있다.
+4. **프라이싱** : 리전별로 가격이 다를수도, 비용 최적화 적인 곳이 있다.
 
 ---
 
 #### 2). 가용 영역 (AZ) : 리전 내의 단일 데이터 센터 또는 데이터 센터 그룹
 
-* 소프트웨어적인 장애에 비즈니스를 중단 없이 계속 운영할 수 있게 됩니다.
-  1. duplicate/redundant : 서로 다른 AZ에 데이터 복제/백업 가능
-  2. Fault Tolerance : 한 AZ가 장애 나도 다른 AZ에서 애플리케이션이 계속 동작
-  3. High availability : 고가용성
-* 각 리전에는 최소 세 개의 AZ이 포함
+* 소프트웨어적인 장애에 **비즈니스를 중단 없이 계속 운영할 수 있게** 됩니다.
+  1. duplicate/redundant : 서로 다른 **AZ에 데이터 복제/백업** 가능
+  2. Fault Tolerance : 한 AZ가 장애 나도 다른 AZ에서 **애플리케이션이 계속 동작**
+  3. High availability : **고가용성**
 * 단일 데이터 센터로 가용 영역을 복수로 지정할 수는 없다.
-* Privete Link를 통해 매우빠른 연결을 하고 있다.
+* **Privete Link를 통해 매우빠른 연결**을 하고 있다.
 
 <div align=center>
     <img src="image/2025-09-21-20-05-36.png" width="80%">
@@ -87,48 +66,39 @@ Amazon 서비스를 프로비저닝 할 수 있는 다양한 방법을 비교할
 
 <div align=center>
     <img src="image/2025-09-21-22-41-25.png" width="80%">
-    <h5> ‼️Edge Location Host AWS Service‼️ <br> 에지 로케이션은 다른 여러 AWS 서비스를 호스팅 한다. </h5>
+    <h5> Edge Location Host AWS Service <br> 에지 로케이션은 다른 여러 AWS 서비스를 호스팅 한다. </h5>
 </div>
 
 #### Edge locations are located outside of AWS Regions 
-#### 에지 로케이션이 호스팅하는 서비스들 중 <br> 대표 글로벌 인프라 서비스 일부는 다음과 같다.
 
 * 이러한 장치는 사용자가 자주 접근하는 데이터에 낮은 지연 시간으로 접근할 수 있도록 지원합니다.
 
 #### 1). Amazon CloudFront : CloudFront is 컨텐츠 전달 "네트워크"
 
-##### CDN : 전 세계 고객과 더 가까운 곳에 콘텐츠 복사본을 제공하는 네트워크
+##### ① CDN : 전 세계 고객과 더 가까운 곳에 콘텐츠 복사본을 제공하는 네트워크
 
-* ‼️**여기서 말하는 "콘텐츠"란**‼️
-  * ‼️이미지, 데이터, 클라이언트 애플리케이션, **API**들을 말한다.‼️
-* Amazon CloudFront는 전 세계에 있는 에지 로케이션을 이용해 사용자가 어떤 위치에 있든 통신 속도를 높입니다. 
-* 반드시 같은 리전에서 위치할 필요는 없다.
+* **여기서 말하는 "콘텐츠"란**
+  * 이미지, 데이터, 클라이언트 애플리케이션, **API**들을 말한다.
+* Amazon CloudFront는 전 세계에 있는 
+에지 로케이션을 이용해 사용자가 어떤 위치에 있든 통신 속도를 높입니다. 
+* **반드시 같은 리전에서 위치할 필요는 없다.**
 
-```
-Which component of the AWS Global Infrastructure does Amazon CloudFront use to ensure low-latency delivery? (Select the best answer.)
 
-* AWS Edge Location
-  Amazon CloudFront uses AWS edge locations to ensure low-latency delivery.
-```
+##### ② 또 다른 말로는 CDN 즉 네트워크 시스템을 <br> 콘텐츠 캐싱 시스템(저장하고 접근)이라고도 한다.
 
-##### ‼️또 다른 말로는 CDN 즉 네트워크 시스템을 <br> 콘텐츠 캐싱 시스템(저장하고 접근)이라고도 한다.‼️
+* 거듭 말하지만. **여기서 말하는 "콘텐츠"란**
+  * 이미지, 데이터, 클라이언트 애플리케이션, **API**들을 말한다.
 
-* Edge locations cache content to deliver data
-   improve the delivery of content by caching it closer to end users
-   
-* ‼️거듭 말하지만. **여기서 말하는 "콘텐츠"란**‼️
-  * ‼️이미지, 데이터, 클라이언트 애플리케이션, **API**들을 말한다.‼️
+* **캐싱은 파일 복사본을**
+  1. 캐시 서버에 저장하고
+     저장(배포)는 CloudFront로
+  2. 캐시서버에 캐시된 콘텐츠에 빠르게 액세스
+     접근은 Route 53을 통해 한다?
 
-* ‼️**캐싱은 파일 복사본을**‼️
-  1. ‼️캐시 서버에 저장하고
-     저장(배포)는 CloudFront로‼️
-  2. ‼️캐시서버에 캐시된 콘텐츠에 빠르게 액세스
-     접근은 Route 53을 통해 한다?‼️
-
-##### 따로 지리적 배포 제한을 하지 않으면 모든 국가에서 접근이 가능하다.
+##### ③ 따로 지리적 배포 제한을 하지 않으면 모든 국가에서 접근이 가능하다.
 * 하지만 사용자의 IP주소를 기반으로 Whitelist, Blacklist를 설정해 국가별 접근을 제어할 수 있다.
 
-##### 엣지 네트워킹의 좀더 자세한 원리
+##### ④ 엣지 네트워킹의 좀더 자세한 원리
 * 410개 이상의 글로벌 멀티 서비스 접속 지점(POP)을 두어 네트워크 홉을 제거한다 -> 이것이 더 짧은 지연시간을 제공한다.
 
 1. **POP의 스펙**
@@ -152,33 +122,29 @@ Which component of the AWS Global Infrastructure does Amazon CloudFront use to e
 #### 2).  Amazon Route 53 : Route 53 is a Domain Name System or DNS
 
 * 어떤 도메인이 어느 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)로 갈지 이름 해석/트래픽 정책.
-* 즉, "유저 기기"에서 부터 "인터넷 애플리케이션과 같은 서버 기기"로 부터 라우팅 하는 DNS
-* Route 53 is a Domain Name System or DNS that routes "end users" to "end application"
 * 도메인 등록, 트래픽 라우팅, 헬스 체크 등을 수행.
 
-##### Routing 방법
+##### ① Routing 방법
 
-1. Failover routing : 장애 감지 후 건강한 위치로 리다이렉트  
-2. Weighted routing : A/B 테스트, 트래픽 비율에 따라 분산  
-3. Latency-based routing : 성능 측정 기반으로 가장 빠른 리전에 라우팅  
-4. Geolocation routing : 국가/지역에 따라 다른 엔드포인트로 보냄
+1. **Failover routing** : 장애 감지 후 건강한 위치로 리다이렉트  
+2. **Weighted routing** : A/B 테스트, 트래픽 비율에 따라 분산  
+3. **Latency-based routing** : 성능 측정 기반으로 가장 빠른 리전에 라우팅  
+4. **Geolocation routing** : 국가/지역에 따라 다른 엔드포인트로 보냄
 
-##### 사용 패턴
+##### ② 사용 패턴
 
-* CloudFront는 어떤 DNS든 사용 가능
-Route 53도 마찬가지로 어떤 CDN/원서버에도 사용 가능.
-* 결론은 서로는 AWS 서비스를 반드시 써야한다가 아니다.
   ```
   1. CloudFront 배포 생성후, 배포 도메인 부여 dxxxx.cloudfront.net
   2. Route 53 Alias A/AAAA 레코드로 www.example.com(또는 루트 도메인) 만들면, 해당 CloudFront 배포에 매핑
   ```
 
+---
+
 #### 3). Global Accesorator
 
 * 플리케이션 위치 중 하나에 문제가 발생했을 때 트래픽 라우팅을 위한 솔루션
-* 상태, 사용자 위치 및 정책에 기반하여 최적의 엔드포인트로 라우팅함
-* Route53이 말하길 에지 네트워크가 Global Accesorator 선택된 상황이다.
-  멀티리전 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)로의 TCP/UDP 트래픽을 가속하는 L4 가속기
+  * 상태, 사용자 위치 및 정책에 기반하여 최적의 엔드포인트로 라우팅함
+* 멀티리전 엔드포인트(클라이언트 입장에서 보이는 URL 진입점)로의 TCP/UDP 트래픽을 가속하는 L4 가속기
   *LB → LB 라우팅 가능하다 `전역/에지 레이어 → 리전 로드 밸런서 → 앱 서버 구조`*
 * 지연시간에 민감한 상황 FPS, 서버 간의 지연시간을 최소화, 
 
@@ -261,8 +227,8 @@ Route 53도 마찬가지로 어떤 CDN/원서버에도 사용 가능.
 ##### ① AWS Elastic Beanstalk
 
 * 개발자는 코드를 업로드하기만 하면 Elastic Beanstalk이 최상위 관리형 자동으로 처리
-    * 인프라 프로비저닝, 확장
-    1. 로드 밸런싱 및 애플리케이션 상태 모니터링
+    1. 인프라 프로비저닝, 확장
+    2. 로드 밸런싱 및 애플리케이션 상태 모니터링
 * 서버 코드를 전부 Zip파일로 만들면 된다. 그러면 아래의 작업을 알아서 자동으로 구축해 준다.
     1. 용량 조정
     2. 로드 밸런싱
