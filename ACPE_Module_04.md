@@ -1,6 +1,23 @@
 
 ---
 
+## Module 4
+
+---
+
+```
+PrivateLink 핵심: 서비스가 내 VPC 안에 있는 것처럼 보이게 하는 VPC 엔드포인트.
+
+AWS Transit Gateway : 여러 VPC와 온프레를 허브-스포크 형태로 연결/라우팅 단순화.
+
+VPC CIDR은 /16~ /28 범위가 일반적 제한이다.
+
+Site-to-Site VPN (O)
+공용 인터넷 상에서 IPsec 암호화 터널 → 비교적 저렴, 품질은 인터넷에 의존.
+```
+
+---
+
 ```
 1. 클라우드와 서브넷으로 리소스 격리 구분 
    Cloud :  VPC / Public

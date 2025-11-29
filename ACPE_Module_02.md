@@ -5,6 +5,20 @@
 
 ---
 
+### 문제
+
+```
+30.  Amazon ECS나 Amazon EKS에서 컨테이너를 실행할 때, EC2 인스턴스를 직접 프로비저닝하고 관리할 필요 없이, 컨테이너당 리소스 단위로 과금되는 서버리스 실행 엔진은 무엇입니까?  
+
+**선택지:**  | 
+A. AWS Lambda  
+B. ⭐️ AWS Fargate ⭐️ 
+C. Amazon Lightsail  
+D. AWS Batch  
+```
+
+---
+
 > ### 📄 1. 사전 용어
 
 #### 1). 서버
